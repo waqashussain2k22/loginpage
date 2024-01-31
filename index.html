@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <form id="signupForm">
+        <h1>Sign Up</h1>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <button type="button" onclick="signup()">Sign Up</button>
+    </form>
+    
+    <script>
+        function signup() {
+            var userName = document.getElementById("username");
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+
+ 
+            if (!userName.value || !email.value || !password.value) {
+                alert("Please fill in all fields.");
+                return; 
+            }
+
+            localStorage.setItem("username", userName.value);
+            localStorage.setItem("email", email.value);
+            localStorage.setItem("password", password.value);
+
+            window.location.href = "login.html";
+        }
+
+        function login() {
+            var pass = localStorage.getItem("password");
+            var Email = localStorage.getItem("email");
+            var loginEmail = document.getElementById("email");
+            var loginPass = document.getElementById("password");
+
+            if (loginEmail.value && loginPass.value) {
+                if (loginEmail.value === Email && loginPass.value === pass) {
+                    
+                } else {
+                    alert("Incorrect email or password. Please try again.");
+                }
+            } else {
+                alert("Please enter both email and password.");
+            }
+        }
+    </script>
+</body>
+
+
+</html>
